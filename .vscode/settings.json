@@ -1,0 +1,24 @@
+{
+  "cSpell.ignoreWords": ["tldw"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "javascript.format.enable": true,
+  "prettier.prettierPath": "node_modules/prettier/index.cjs",
+  "prettier.documentSelectors": [
+    "**/*.astro",
+    "**/**.json",
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "[svg]": {
+    "editor.defaultFormatter": "redhat.vscode-xml"
+  }
+}
