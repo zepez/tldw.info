@@ -56,7 +56,8 @@ export default function Page() {
       <main className="flex h-[var(--main-height)] w-full items-center justify-center">
         <section className="h-auto w-full max-w-2xl pb-48">
           <h2 className="text-4xl font-bold">
-            📹 TLDW <span className="text-2xl">- Too Long, Didn't Watch</span>
+            📹 TLDW{" "}
+            <span className="text-2xl">- Too Long, Didn&apos;t Watch</span>
           </h2>
           <h1 className="pb-12 text-xl">
             Instantly summarize YouTube videos from your favorite channels
