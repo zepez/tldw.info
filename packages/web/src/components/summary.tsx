@@ -27,6 +27,12 @@ export default function Summary({ id, transcript }: Props) {
 
       {error && <div>{error.message}</div>}
 
+      {submitted && !completion && (
+        <div className="bg-muted my-4 flex items-center justify-center p-8">
+          <p>Generating summary...</p>
+        </div>
+      )}
+
       {completion && (
         <div
           className="prose bg-muted prose-h1:text-lg my-4 max-w-none rounded-md p-4"
