@@ -66,7 +66,7 @@ export default function Page() {
     <>
       <Header />
       <main className="flex h-[var(--main-height)] w-full items-center justify-center px-8">
-        <section className="h-auto w-full max-w-2xl pb-16 lg:pb-48">
+        <section className="h-auto w-full max-w-2xl pb-16 lg:pb-32">
           <h2 className="text-4xl font-bold">
             📹 TLDW{" "}
             <span className="text-2xl">
