@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import YouTube from "youtube-sr";
-import { Badge } from "@/components/ui/badge";
 import { EyeOpenIcon, ClockIcon } from "@radix-ui/react-icons";
+import { Badge } from "@/components/ui/badge";
+import { formatNumber } from "@/lib/utils";
 
 interface Props {
   id: string;
@@ -59,7 +60,7 @@ export default async function Details({ id }: Props) {
 
       <section className="flex justify-evenly text-sm font-semibold">
         <span className="flex items-center justify-center gap-2">
-          <EyeOpenIcon className="h-5 w-5" /> {details.views}
+          <EyeOpenIcon className="h-5 w-5" /> {formatNumber(details.views)}
         </span>
         <span className="flex items-center justify-center gap-2">
           <ClockIcon className="h-5 w-5" /> {details.durationFormatted}
