@@ -21,6 +21,18 @@ const schema = z.object({
   url: z
     .string()
     .url()
+    .transform((url) => {
+      try {
+        const parsedUrl = new URL(url);
+        if (parsedUrl.hostname === "youtu.be") {
+          const videoId = parsedUrl.pathname.substring(1);
+          return `https://www.youtube.com/watch?v=${videoId}`;
+        }
+      } catch {
+        return url;
+      }
+      return url;
+    })
     .refine(
       (url) => {
         try {
@@ -53,13 +65,17 @@ export default function Page() {
   return (
     <>
       <Header />
-      <main className="flex h-[var(--main-height)] w-full items-center justify-center">
-        <section className="h-auto w-full max-w-2xl pb-48">
+      <main className="flex h-[var(--main-height)] w-full items-center justify-center px-8">
+        <section className="h-auto w-full max-w-2xl pb-16 lg:pb-48">
           <h2 className="text-4xl font-bold">
             📹 TLDW{" "}
-            <span className="text-2xl">- Too Long, Didn&apos;t Watch</span>
+            <span className="text-2xl">
+              <span className="hidden lg:inline">- </span>
+              <br className="block lg:hidden" />
+              Too Long, Didn&apos;t Watch
+            </span>
           </h2>
-          <h1 className="pb-12 text-xl">
+          <h1 className="pb-12 pt-2 text-lg leading-tight lg:text-xl">
             Instantly summarize YouTube videos from your favorite channels
           </h1>
 
@@ -82,13 +98,13 @@ export default function Page() {
                       />
                     </FormControl>
                     <FormDescription>
-                      Input any youtube video URL to get started.
+                      Input any youtube video link to get started.
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="min-w-48">
+              <Button type="submit" className="lg:min-w-48">
                 Go!
               </Button>
             </form>
