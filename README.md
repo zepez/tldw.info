@@ -15,7 +15,7 @@
     <br />
     <br />
     <br />
-    Programmatically retrieve YouTube video transcripts and summarize them using llama-3.
+    TOO LONG, DIDN'T WATCH
     <br />
   </sup>
   <br />
@@ -32,7 +32,7 @@
 
 ## What?
 
-This is a simple project that will retrieve the transcript for a given YouTube video and provide an instant summarization of the content.
+This is a simple project that will retrieve the transcript for a given YouTube video and provide an instant summarization of the content using generative AI.
 
 ## Get Started
 
