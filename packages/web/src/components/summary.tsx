@@ -22,14 +22,14 @@ export default function Summary({ id, transcript }: Props) {
   });
 
   return (
-    <div className="h-full overflow-y-scroll p-8">
-      <h2 className="text-sm font-bold uppercase">Generated Summary</h2>
+    <div>
+      <p className="text-sm font-bold uppercase">Generated Summary</p>
 
       {error && <div>{error.message}</div>}
 
       {completion && (
         <div
-          className="prose bg-muted my-4 max-w-none rounded-md p-4"
+          className="prose bg-muted prose-h1:text-lg my-4 max-w-none rounded-md p-4"
           dangerouslySetInnerHTML={{ __html: completion }}
         />
       )}
@@ -47,7 +47,7 @@ export default function Summary({ id, transcript }: Props) {
               button below to generate one!
             </p>
             <button
-              className="bg-primary text-primary-foreground mt-4 rounded-md px-4 py-2"
+              className="bg-primary text-primary-foreground mt-4 w-full rounded-md px-4 py-2"
               type="submit"
             >
               Generate Summary

@@ -31,11 +31,11 @@ export default function Transcript({ transcript }: Props) {
 
   return (
     <div className="sticky top-0 hidden h-[var(--main-height)] overflow-y-scroll border-l p-4 lg:block">
-      <h2 className="px-2 text-sm font-bold uppercase">Video transcript</h2>
+      <p className="px-2 text-sm font-bold uppercase">Video transcript</p>
 
       <Input
         className="my-3"
-        placeholder="Filter transcript lines"
+        placeholder="Filter Transcript"
         value={filter}
         onChange={handleFilterChange}
       />

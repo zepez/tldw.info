@@ -4,6 +4,7 @@ import Header from "@/components/header";
 import Video from "@/components/video";
 import Transcript from "@/components/transcript";
 import Summary from "@/components/summary";
+import Details from "@/components/details";
 import {
   ResizableHandle,
   ResizablePanel,
@@ -40,9 +41,12 @@ export default async function Page({
             collapsible
             minSize={25}
             maxSize={100}
-            className="border-t"
+            className="h-full border-t"
           >
-            <Summary id={id} transcript={transcript} />
+            <div className="mx-auto grid h-full max-w-5xl grid-cols-1 gap-8 overflow-y-scroll border-t p-8 md:grid-cols-2">
+              <Summary id={id} transcript={transcript} />
+              <Details id={id} />
+            </div>
           </ResizablePanel>
         </ResizablePanelGroup>
         <Transcript transcript={transcript} />
