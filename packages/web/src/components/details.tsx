@@ -67,7 +67,7 @@ export default async function Details({ id }: Props) {
         </span>
       </section>
 
-      <pre className="bg-muted text-muted-foreground overflow-hidden text-wrap rounded-md p-4 text-left">
+      <pre className="bg-muted text-muted-foreground overflow-hidden overflow-x-scroll text-wrap rounded-md p-4 text-left">
         {details.description}
       </pre>
     </div>

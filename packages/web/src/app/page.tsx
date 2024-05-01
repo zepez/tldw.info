@@ -54,7 +54,7 @@ export default function Page() {
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
     defaultValues: {
-      url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      url: "",
     },
   });
 
@@ -92,7 +92,7 @@ export default function Page() {
                     <FormLabel hidden>URL</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                        placeholder="https://www.youtube.com/watch?v=S_RorY_FRvo"
                         {...field}
                         className="w-full"
                       />
