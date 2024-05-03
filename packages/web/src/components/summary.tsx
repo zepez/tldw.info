@@ -3,10 +3,11 @@
 import { useState } from "react";
 import { useCompletion } from "ai/react";
 import he from "he";
+import type { TranscriptResponse } from "youtube-transcript";
 
 interface Props {
   id: string;
-  transcript: { text: string }[];
+  transcript: TranscriptResponse[];
 }
 
 export default function Summary({ id, transcript }: Props) {
@@ -34,10 +35,9 @@ export default function Summary({ id, transcript }: Props) {
       )}
 
       {completion && (
-        <div
-          className="prose bg-muted prose-h1:text-lg my-4 max-w-none rounded-md p-4"
-          dangerouslySetInnerHTML={{ __html: completion }}
-        />
+        <div className="prose bg-muted prose-h1:text-lg my-4 max-w-none whitespace-pre-wrap rounded-md p-4">
+          {completion}
+        </div>
       )}
 
       {!submitted && (

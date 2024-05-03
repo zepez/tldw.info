@@ -30,7 +30,7 @@ export default function Transcript({ transcript }: Props) {
   };
 
   return (
-    <div className="sticky top-0 hidden h-[var(--main-height)] overflow-y-scroll border-l p-4 lg:block">
+    <>
       <p className="px-2 text-sm font-bold uppercase">Video transcript</p>
 
       <Input
@@ -58,6 +58,6 @@ export default function Transcript({ transcript }: Props) {
           </button>
         );
       })}
-    </div>
+    </>
   );
 }

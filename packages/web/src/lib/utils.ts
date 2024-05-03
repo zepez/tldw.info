@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { YoutubeTranscript } from "youtube-transcript";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -14,5 +15,24 @@ export function formatNumber(num: number): string {
     return num.toLocaleString();
   } else {
     return num.toString();
+  }
+}
+
+export async function fetchTranscript(id: string) {
+  try {
+    const transcript = await YoutubeTranscript.fetchTranscript(id);
+
+    return { error: null, transcript };
+  } catch (e) {
+    let error = "An error occurred while fetching the transcript.";
+
+    if (e instanceof Error) {
+      error = e.message.toString();
+    }
+
+    return {
+      error,
+      transcript: [],
+    };
   }
 }

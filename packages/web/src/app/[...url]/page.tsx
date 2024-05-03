@@ -1,15 +1,15 @@
 import { notFound } from "next/navigation";
-import { YoutubeTranscript } from "youtube-transcript";
+import { Suspense } from "react";
 import Header from "@/components/header";
 import Video from "@/components/video";
-import Transcript from "@/components/transcript";
-import Summary from "@/components/summary";
-import Details from "@/components/details";
+import Main from "@/components/main";
+import Aside from "@/components/aside";
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export const dynamic = "force-dynamic";
 
@@ -19,8 +19,6 @@ export default async function Page({
   searchParams: { v?: string };
 }) {
   if (!id) return notFound();
-
-  const transcript = await YoutubeTranscript.fetchTranscript(id);
 
   return (
     <div className="h-screen">
@@ -44,12 +42,22 @@ export default async function Page({
             className="h-full border-t"
           >
             <div className="mx-auto grid h-full max-w-5xl grid-cols-1 gap-8 overflow-y-scroll border-t p-8 md:grid-cols-2">
-              <Summary id={id} transcript={transcript} />
-              <Details id={id} />
+              <Suspense
+                fallback={
+                  <>
+                    <Skeleton className="h-full w-full" />
+                    <Skeleton className="h-full w-full" />
+                  </>
+                }
+              >
+                <Main id={id} />
+              </Suspense>
             </div>
           </ResizablePanel>
         </ResizablePanelGroup>
-        <Transcript transcript={transcript} />
+        <Suspense fallback={<Skeleton className="h-full w-full" />}>
+          <Aside id={id} />
+        </Suspense>
       </main>
     </div>
   );
