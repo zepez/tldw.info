@@ -14,7 +14,7 @@ export async function POST(req: Request) {
     model: anthropic.chat("claude-3-opus-20240229"),
     system:
       "You are a video transcript summarizer. " +
-      "Please summarize the video transcript below - please consider the context of the video and what information would be most useful to someone who has not watched the video.",
+      "Please summarize the video transcript below - please consider the context of the video and what information would be most useful to someone who has not watched the video. You only ever respond with a summary of the video transcript.",
     prompt,
   });
 

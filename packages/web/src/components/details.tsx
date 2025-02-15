@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import YouTube from "youtube-sr";
 import { EyeOpenIcon, ClockIcon } from "@radix-ui/react-icons";
+import { fetchDetails } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { formatNumber } from "@/lib/utils";
 
@@ -10,7 +10,18 @@ interface Props {
 }
 
 export default async function Details({ id }: Props) {
-  const details = await YouTube.getVideo(`https://youtube.com/watch?v=${id}`);
+  const { error, details } = await fetchDetails(id);
+
+  if (error || !details) {
+    return (
+      <div className="flex flex-col gap-4">
+        <h1 className="text-sm font-bold uppercase">Error</h1>
+        <div className="bg-muted rounded-md p-4">
+          <p>{error}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col gap-4">

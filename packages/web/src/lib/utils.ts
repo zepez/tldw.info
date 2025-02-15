@@ -1,6 +1,7 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { YoutubeTranscript } from "youtube-transcript";
+import YouTube from "youtube-sr";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -33,6 +34,26 @@ export async function fetchTranscript(id: string) {
     return {
       error,
       transcript: [],
+    };
+  }
+}
+
+export async function fetchDetails(id: string) {
+  try {
+    const details = await YouTube.getVideo(`https://youtube.com/watch?v=${id}`);
+    if (!details) throw new Error("Video details unable to be retrieved.");
+
+    return { error: null, details };
+  } catch (e) {
+    let error = "An error occurred while fetching the video details.";
+
+    if (e instanceof Error) {
+      error = e.message.toString();
+    }
+
+    return {
+      error,
+      details: null,
     };
   }
 }
