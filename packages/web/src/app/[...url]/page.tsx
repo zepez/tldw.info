@@ -4,6 +4,7 @@ import Header from "@/components/header";
 import Video from "@/components/video";
 import Main from "@/components/main";
 import Aside from "@/components/aside";
+import TranscriptNotice from "@/components/transcript-notice";
 import {
   ResizableHandle,
   ResizablePanel,
@@ -23,6 +24,7 @@ export default async function Page({
   return (
     <div className="h-screen">
       <Header />
+      <TranscriptNotice key={id} id={id} />
       <main className="grid h-[var(--main-height)] grid-cols-1 lg:grid-cols-[1fr,400px]">
         <ResizablePanelGroup direction="vertical" className="h-full">
           <ResizablePanel

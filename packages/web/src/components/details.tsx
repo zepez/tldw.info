@@ -33,20 +33,8 @@ export default async function Details({ id }: Props) {
           target="_blank"
           className="bg-muted text-muted-foreground flex items-center justify-start gap-4 rounded-md p-4"
         >
-          {details?.channel?.icon.url && (
-            <Image
-              src={details.channel.icon.url}
-              alt="Channel Icon"
-              className="h-12 w-12 rounded-full"
-              width={100}
-              height={100}
-            />
-          )}
           <div>
             <p className="text-xl font-semibold">{details.channel?.name}</p>
-            <p className="pt-1 text-xs font-bold uppercase">
-              {details.uploadedAt}
-            </p>
           </div>
         </Link>
       )}
