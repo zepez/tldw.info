@@ -1,7 +1,7 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { YoutubeTranscript } from "youtube-transcript";
-import YouTube from "youtube-sr";
+import { cache } from "react";
+import { getDetails, getTranscript } from "./youtube";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -19,9 +19,9 @@ export function formatNumber(num: number): string {
   }
 }
 
-export async function fetchTranscript(id: string) {
+export const fetchTranscript = cache(async (id: string) => {
   try {
-    const transcript = await YoutubeTranscript.fetchTranscript(id);
+    const transcript = await getTranscript(id);
 
     return { error: null, transcript };
   } catch (e) {
@@ -36,11 +36,11 @@ export async function fetchTranscript(id: string) {
       transcript: [],
     };
   }
-}
+});
 
-export async function fetchDetails(id: string) {
+export const fetchDetails = cache(async (id: string) => {
   try {
-    const details = await YouTube.getVideo(`https://youtube.com/watch?v=${id}`);
+    const details = await getDetails(id);
     if (!details) throw new Error("Video details unable to be retrieved.");
 
     return { error: null, details };
@@ -56,4 +56,4 @@ export async function fetchDetails(id: string) {
       details: null,
     };
   }
-}
+});
